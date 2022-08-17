@@ -38,8 +38,8 @@
                 if (textvalue.substr(0,7) == "execute") {
                     let whisubtemp = whisubstr(textvalue,8,(a,b,c) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p ") ;})
                     inputstr.push("as " + whisubtemp + " at @s");
-                    whisubtemp2 = whisubstr(textvalue,9 + whisubtemp.length,(a,b,c) => {return !(c == 3);},(a,b,c) => {console.log(a.substr(b,1).match(/~\d*|\u005e\d*|\d/));return a.substr(b,1).match(/~\d*|\u005e\d*|\d/)?c + 1:c})
-                    inputstr.push(" " + (("positioned " + whisubtemp2).match(/positioned\u0020((~|\u005e)\u0020?){3}/) ? "positioned " + whisubtemp2 : ""))
+                    whisubtemp2 = whisubstr(textvalue,9 + whisubtemp.length,(a,b,c) => {return !(c == 3);},(a,b,c) => {console.log(a.substr(b,1).test(/~\d*|\u005e\d*|\d/));return a.substr(b,1).test(/~\d*|\u005e\d*|\d/)?c + 1:c})
+                    inputstr.push(" " + (("positioned " + whisubtemp2).test(/positioned\u0020((~|\u005e)\u0020?){3}/) ? "positioned " + whisubtemp2 : ""))
                 };
                 document.getElementById("out").textContent = inputstr;
             }
