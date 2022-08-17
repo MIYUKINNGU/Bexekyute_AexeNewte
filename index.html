@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>旧executeから新execute変換サイト</title>
+    </head>
+    <body>
+        <textarea id="textarea"></textarea>
+        <input type="button" value="変換" onclick="con()" style="display:block" />
+        <pre><code><span id="out" style="display:block"></span></code></pre>
+        <script>
+            //文字列挿入関数。どっかから持ってきた。
+            function strIns(str, idx, val){
+                var res = str.slice(0, idx) + val + str.slice(idx);
+                return res;
+            };
+            //特定のchar文字までの文字を取得～
+            function whisubstr(str,idx,func){
+                let i = 0;
+                let listr = [];
+                while (func(str,i)) {
+                    listr.push(str.substr(i,1))
+                    i += 1;
+                };
+                return listr.join("")
+            };
+            //main関数だと思いなさい。
+            function con() {
+                const textvalue = document.getElementById("textarea").value;
+                let inputstr = [];
+                if (textvalue.substr(0,7) == "execute") {
+                    inputstr.unshift("as" + whisubstr(textvalue,8,(a,b) => {return a.substr(b-1,2) == "] ";}) + "at @s")
+                };
+                document.getElementById("out").textContent = inputstr;
+            }
+        </script>
+    </body>
+</html>
