@@ -15,14 +15,20 @@
                 return res;
             };
             //条件に当てはまるまでの文字を取得～　高階関数っていうね。　str：文字列　idx：最初の文字列の位置　func：条件　func2：positionedで使うために作った雑用関数
-            function whisubstr(str,idx,func,func2 = (a,b,c) => {return 0;},rep = ""){
+            function whisubstr(str,idx,func,func2 = (a,b,c) => {return 0;},rep = "",mode = false){
                 let i = 0;
                 let listr = [];
                 let user = 0;
+                let sertch = idx
                 //dowhileにしてるけど正直whileでもいい～
                 do {
-                    user = func2(str,idx+i,user)
-                    listr.push(str.substr(idx+i,1));
+                    if (str.substr(idx+i,1) == " " && mode) {
+                        listr.push(str.substr(sertch,(idx+i)-sertch));
+                        user += 1
+                        sertch = idx+i+2;
+                    }else{
+                        listr.push(str.substr(idx+i,1));
+                    };
                     i += 1;
                     console.log("SUCCESSFUL")
                     //無限処理対策～
@@ -43,9 +49,9 @@
                     let whisubtemp = whisubstr(textvalue,8,(a,b,c) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p ") ;})
                     inputstr.push("as " + whisubtemp + " at @s");
                     //正規表現とUnicodeしかない地獄のバグバグpositioned！/~\d*|\u005e\d*|\d/という正規表現は~~~とか~1~~とかを表してるよ！正直参考にするな。
-                    whisubtemp2 = whisubstr(textvalue,9 + whisubtemp.length,(a,b,c) => {return !(c == 3);},(a,b,c) => {console.log(/~\d*|\u005e\d*|\d/.test(a.substr(b,1)));return /~\d*|\u005e\d*|\d/.test(a.substr(b,1))?c + 1:c}," ")
-                    console.log(whisubtemp2.replace(/\s+/,""))
-                    inputstr.push(" " + (/~~~|\u005e\u005e\u005e/.test(whisubtemp2.replace(/\s+/,"")) ? "positioned " + whisubtemp2 : ""))
+                    whisubtemp2 = whisubstr(textvalue,9 + whisubtemp.length,(a,b,c) => {return !(c == 3);}," ",true);
+                    console.log(whisubtemp2.replace(/\s+/,""));
+                    inputstr.push(" " + (/~~~|\u005e\u005e\u005e/.test(whisubtemp2.replace(/\s+/,"")) ? "positioned " + whisubtemp2 : ""));
                 };
                 //出力END
                 document.getElementById("out").textContent = inputstr;
