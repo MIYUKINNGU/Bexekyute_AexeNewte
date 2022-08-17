@@ -4,6 +4,7 @@
         <title>旧executeから新execute変換サイト</title>
     </head>
     <body>
+        <!--htmlは見ても見なくても変わらん。-->
         <textarea id="textarea"></textarea>
         <input type="button" value="変換" onclick="con()" style="display:block" />
         <pre><code><span id="out" style="display:block"></span></code></pre>
@@ -13,16 +14,18 @@
                 var res = str.slice(0, idx) + val + str.slice(idx);
                 return res;
             };
-            //特定のchar文字までの文字を取得～
+            //条件に当てはまるまでの文字を取得～　高階関数っていうね。　str：文字列　idx：最初の文字列の位置　func：条件　func2：positionedで使うために作った雑用関数
             function whisubstr(str,idx,func,func2 = (a,b,c) => {return 0;}){
                 let i = 0;
                 let listr = [];
                 let user = 0;
+                //dowhileにしてるけど正直whileでもいい～
                 do {
                     user = func2(str,idx+i,user)
                     listr.push(str.substr(idx+i,1));
                     i += 1;
                     console.log("SUCCESSFUL")
+                    //無限処理対策～
                     if (str.length < i){
                         listr = ["無限処理が入りました。コマンドの構文にミスがある可能性があります。"];
                         break;
@@ -36,11 +39,14 @@
                 const textvalue = document.getElementById("textarea").value;
                 let inputstr = [];
                 if (textvalue.substr(0,7) == "execute") {
+                    //一瞬で作り終わったas at。こいつはまともに動くぞ(まともにdebugしてないけど)
                     let whisubtemp = whisubstr(textvalue,8,(a,b,c) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p ") ;})
                     inputstr.push("as " + whisubtemp + " at @s");
+                    //正規表現とUnicodeしかない地獄のバグバグpositioned！/~\d*|\u005e\d*|\d/という正規表現は~~~とか~1~~とかを表してるよ！正直参考にするな。
                     whisubtemp2 = whisubstr(textvalue,9 + whisubtemp.length,(a,b,c) => {return !(c == 3);},(a,b,c) => {console.log(/~\d*|\u005e\d*|\d/.test(a.substr(b,1)));return /~\d*|\u005e\d*|\d/.test(a.substr(b,1))?c + 1:c})
-                    inputstr.push(" " + ((/positioned\u0020((~|\u005e)\u0020?){3}/).test("positioned " + whisubtemp2) ? "positioned " + whisubtemp2 : ""))
+                    inputstr.push(" " + ((/positioned\u0020((~|\u005e)(\u0020)?){3}/).test("positioned " + whisubtemp2) ? "positioned " + whisubtemp2 : ""))
                 };
+                //出力END
                 document.getElementById("out").textContent = inputstr;
             }
         </script>
