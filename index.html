@@ -14,8 +14,8 @@
                 var res = str.slice(0, idx) + val + str.slice(idx);
                 return res;
             };
-            //条件に当てはまるまでの文字を取得～　高階関数っていうね。　str：文字列　idx：最初の文字列の位置　func：条件　func2：positionedで使うために作った雑用関数
-            function whisubstr(str,idx,func,func2 = (a,b,c) => {return 0;},mode = false){
+            //条件に当てはまるまでの文字を取得～　高階関数っていうね。　str：文字列　idx：最初の文字列の位置　func：条件　mode：座標mode。これでゴリ押すしかなかった。
+            function whisubstr(str,idx,func,mode = false){
                 let i = 0;
                 let listr = [];
                 let user = 0;
