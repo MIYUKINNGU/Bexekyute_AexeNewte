@@ -14,10 +14,12 @@
                 return res;
             };
             //特定のchar文字までの文字を取得～
-            function whisubstr(str,idx,func){
+            function whisubstr(str,idx,func,func2 = (a,b,c) => {return 0;}){
                 let i = 0;
                 let listr = [];
-                while (func(str,idx+i)) {
+                let user = 0;
+                while (func(str,idx+i,user)) {
+                    user = func2(str,idx+i,user)
                     listr.push(str.substr(idx+i,1));
                     i += 1;
                     console.log("SUCCESSFUL")
@@ -34,7 +36,10 @@
                 const textvalue = document.getElementById("textarea").value;
                 let inputstr = [];
                 if (textvalue.substr(0,7) == "execute") {
-                    inputstr.unshift("as " + whisubstr(textvalue,8,(a,b) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p ") ;}) + " at @s");
+                    let whisubtemp = whisubstr(textvalue,8,(a,b,c) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p ") ;})
+                    inputstr.unshift("as " + whisubtemp + " at @s");
+                    whisubtemp2 = whisubstr(textvalue,8 + whisubtemp.length,(a,b,c) => {return !(c == 3);},(a) => {return a.substr(b,1).match(/~|\u005e|\d/)?c + 1:c})
+                    inputstr.unshift(" " + ("positioned " + whisubtemp2.match(/positioned\u0020((~|\u005e)\u0020?){3}/) ? "positioned " + whisubtemp2:""))
                 };
                 document.getElementById("out").textContent = inputstr;
             }
