@@ -30,7 +30,7 @@
                 const textvalue = document.getElementById("textarea").value;
                 let inputstr = [];
                 if (textvalue.substr(0,7) == "execute") {
-                    inputstr.unshift("as" + whisubstr(textvalue,8,(a,b) => {return a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p " ;}) + "at @s");
+                    inputstr.unshift("as" + whisubstr(textvalue,8,(a,b) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p ") ;}) + "at @s");
                 };
                 document.getElementById("out").textContent = inputstr;
             }
