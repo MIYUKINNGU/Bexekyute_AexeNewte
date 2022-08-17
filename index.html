@@ -15,30 +15,33 @@
                 return res;
             };
             //条件に当てはまるまでの文字を取得～　高階関数っていうね。　str：文字列　idx：最初の文字列の位置　func：条件　func2：positionedで使うために作った雑用関数
-            function whisubstr(str,idx,func,func2 = (a,b,c) => {return 0;},rep = "",mode = false){
+            function whisubstr(str,idx,func,func2 = (a,b,c) => {return 0;},mode = false){
                 let i = 0;
                 let listr = [];
                 let user = 0;
-                let sertch = idx
+                let sertch = idx;
+                let backstr = "";
+                let ends = 0;
                 //dowhileにしてるけど正直whileでもいい～
                 do {
-                    if (str.substr(idx+i,1) == " " && mode) {
-                        listr.push(str.substr(sertch,(idx+i)-sertch));
+                    if ((str.substr(idx+i,1) == "~" || str.substr(idx+i,1) == "^" || (/\d/.test(str.substr(idx+i,1)) && backstr == " ") ) && mode) {
                         user += 1
-                        sertch = idx+i+2;
                     }else{
                         listr.push(str.substr(idx+i,1));
                     };
                     i += 1;
                     console.log("SUCCESSFUL")
+                    backstr = str.substr(idx+i,1)
                     //無限処理対策～
                     if (str.length < i){
                         listr = ["無限処理が入りました。コマンドの構文にミスがある可能性があります。"];
                         break;
-                    }
+                    };
+                    ends = idx + i + 1;
                 } while (func(str,idx+i,user));
+                listr.push(str.substr(sertch,ends-sertch))
                 console.log(listr);
-                return listr.filter(a => a !== " ").join(rep);
+                return listr.join("");
             };
             //main関数だと思いなさい。
             function con() {
@@ -49,7 +52,7 @@
                     let whisubtemp = whisubstr(textvalue,8,(a,b,c) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p ") ;})
                     inputstr.push("as " + whisubtemp + " at @s");
                     //正規表現とUnicodeしかない地獄のバグバグpositioned！/~\d*|\u005e\d*|\d/という正規表現は~~~とか~1~~とかを表してるよ！正直参考にするな。
-                    whisubtemp2 = whisubstr(textvalue,9 + whisubtemp.length,(a,b,c) => {return !(c == 3);}," ",true);
+                    whisubtemp2 = whisubstr(textvalue,9 + whisubtemp.length,(a,b,c) => {return !(c == 3);},true);
                     console.log(whisubtemp2.replace(/\s+/,""));
                     inputstr.push(" " + (/~~~|\u005e\u005e\u005e/.test(whisubtemp2.replace(/\s+/,"")) ? "positioned " + whisubtemp2 : ""));
                 };
