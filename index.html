@@ -44,7 +44,9 @@
                     };
                     ends = idx + i + 1;
                 } while (func(str,idx+i,user));
-                listr.push(str.substr(sertch,ends-sertch))
+                if (mode) {
+                    listr.push(str.substr(sertch,ends-sertch));
+                };
                 console.log(listr);
                 return listr.join("");
             };
