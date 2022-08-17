@@ -25,7 +25,7 @@
                 //dowhileにしてるけど正直whileでもいい～
                 do {
                     console.log((str.substr(idx+i,1) == "~" || str.substr(idx+i,1) == "^" || (/[0-9]/.test(str.substr(idx+i,1)) && backstr == " ") ) && mode)
-                    console.log(/[0-9]/.test(str.substr(idx+i,1)))
+                    console.log((/[0-9]/.test(str.substr(idx+i,1)) && backstr == " "))
                     if ((str.substr(idx+i,1) == "~" || str.substr(idx+i,1) == "^" || (/[0-9]/.test(str.substr(idx+i,1)) && backstr == " ") ) && mode) {
                         user += 1
                         console.log(user)
