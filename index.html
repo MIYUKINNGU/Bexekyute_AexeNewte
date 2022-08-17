@@ -38,7 +38,7 @@
                     console.log("SUCCESSFUL")
                     backstr = str.substr(idx+i,1)
                     //無限処理対策～
-                    if (str.length < i){
+                    if (str.length+5 < i){
                         listr = ["無限処理が入りました。コマンドの構文にミスがある可能性があります。"];
                         break;
                     };
