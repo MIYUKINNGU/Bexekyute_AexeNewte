@@ -24,7 +24,7 @@
                 let ends = 0;
                 //dowhileにしてるけど正直whileでもいい～
                 do {
-                    console.log((str.substr(idx+i,1) == "~" || str.substr(idx+i,1) == "^" || (/\d/.test(str.substr(idx+i,1)) && backstr == " ") ))
+                    console.log((str.substr(idx+i,1) == "~" || str.substr(idx+i,1) == "^" || (/\d/.test(str.substr(idx+i,1)) && backstr == " ") ) && mode)
                     if ((str.substr(idx+i,1) == "~" || str.substr(idx+i,1) == "^" || (/\d/.test(str.substr(idx+i,1)) && backstr == " ") ) && mode) {
                         user += 1
                         console.log(user)
