@@ -18,7 +18,7 @@
                 let i = 0;
                 let listr = [];
                 while (func(str,idx+i)) {
-                    listr.push(str.substr(+i,1));
+                    listr.push(str.substr(idx+i,1));
                     i += 1;
                     console.log("SUCCESSFUL")
                     if (str.length < i){
