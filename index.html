@@ -44,7 +44,7 @@
                     inputstr.push("as " + whisubtemp + " at @s");
                     //正規表現とUnicodeしかない地獄のバグバグpositioned！/~\d*|\u005e\d*|\d/という正規表現は~~~とか~1~~とかを表してるよ！正直参考にするな。
                     whisubtemp2 = whisubstr(textvalue,9 + whisubtemp.length,(a,b,c) => {return !(c == 3);},(a,b,c) => {console.log(/~\d*|\u005e\d*|\d/.test(a.substr(b,1)));return /~\d*|\u005e\d*|\d/.test(a.substr(b,1))?c + 1:c})
-                    inputstr.push(" " + ((/((~|\u005e)(\u0020)?){3}/).test(whisubtemp2) ? "positioned " + whisubtemp2 : ""))
+                    inputstr.push(" " + (/~~~|\u005e\u005e\u005e/.test(whisubtemp2.replace(/\s+/,"")) ? "positioned " + whisubtemp2 : ""))
                 };
                 //出力END
                 document.getElementById("out").textContent = inputstr;
