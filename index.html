@@ -20,15 +20,15 @@
                 let ends = 0;
                 //dowhileにしてるけど正直whileでもいい～
                 do {
-                    console.log((/~|\u005e/.test(backstr) || (/[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ")) && mode)
+                    console.log((/~|\u005e/.test(backstr) || (/\u002d?[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ")) && mode)
                     console.log((/[0-9]/.test(backstr) && str.substr(idx+i,1) == " "))
                     console.log(backstr)
-                    if ((/~|\u005e/.test(backstr) || (/[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ")) && mode) {
+                    if ((/~|\u005e/.test(backstr) || (/\u002d?[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ")) && mode) {
                         user += 1
                         console.log(user)
                         if (user == 3){
                             let loop = 0
-                            while (/[0-9]/.test(str.substr(idx+i+2,1))) {
+                            while (/\u002d?[0-9]/.test(str.substr(idx+i+2,1))) {
                                 loop += 1
                                 console.log("USER SUCCESSFUL")
                                 console.log(str.substr(idx+i-+1,3))
@@ -72,6 +72,7 @@
                 while (whileswitch) {
                     mainloop += 1
                     if (inputtext.substr(0,7) == "execute") {
+                        console.log("if_execute")
                         //一瞬で作り終わったas at。こいつはまともに動くぞ(まともにdebugしてないけど)
                         let whisubtemp = whisubstr(inputtext,8,(a,b,c) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p ") ;})
                         inputstr.push("<code class=\"codePurple\">as</code><code class=\"codeLightGreen\"> " + whisubtemp + "</code> <code class=\"codePurple\">at</code><code class=\"codeLightGreen\"> @s</code>");
