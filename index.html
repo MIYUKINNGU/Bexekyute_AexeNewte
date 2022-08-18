@@ -64,7 +64,7 @@
             //main関数だと思いなさい。
             function con() {
                 const textvalue = document.getElementById("textarea").value;
-                let inputtext = textvalue;
+                let inputtext = textvalue.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/&/,"&amp;");
                 let inputstr = [];
                 let whileswitch = true
                 let mainloop = 0;
@@ -133,6 +133,7 @@
                         inputstr.push(" " + whisubtemp);
                         break;
                     }else {
+                        inputstr.push("run");
                         inputstr.push(inputtext);
                         whileswitch = false
                     };
@@ -143,7 +144,7 @@
                     console.log("SUCCESSFULC")
                 }
                 //出力END
-                document.getElementById("out").textContent = inputstr;
+                document.getElementById("out").innerHTML = "<span id=\"out\" style=\"display:block\">" + inputstr + "</span>";
             }
         </script>
     </body>
