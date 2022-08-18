@@ -24,7 +24,7 @@
                 let ends = 0;
                 //dowhileにしてるけど正直whileでもいい～
                 do {
-                    console.log((/[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ") && mode)
+                    console.log((/~|\u005e/.test(backstr) || (/[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ")) && mode)
                     //構文ミスメモ：どうやらbackstr変数が問題らしい。backstr変数の動きを見たらわかるかも...?
                     console.log((/[0-9]/.test(backstr) && str.substr(idx+i,1) == " "))
                     console.log(backstr)
