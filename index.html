@@ -39,9 +39,9 @@
                     }else if (!mode) {
                         listr.push(str.substr(idx+i,1));
                     };
+                    backstr = str.substr(idx+i,1)
                     i += 1;
                     console.log("SUCCESSFUL")
-                    backstr = str.substr(idx+i,1)
                     //無限処理対策～
                     if (str.length+5 < i){
                         listr = ["無限処理が入りました。コマンドの構文にミスがある可能性があります。"];
