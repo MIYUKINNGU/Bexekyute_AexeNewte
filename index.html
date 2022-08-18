@@ -103,9 +103,9 @@
                         inputstr.push("<code class=\"codePurple\"> if blocks</code>");
                         whisubtemp = whisubstr(inputtext,13,(a,b,c) => {return !(c == 3);},true);
                         inputstr.push("<code class=\"codenumber\"> " + whisubtemp);
-                        whisubtemp2 = whisubstr(inputtext,14 + whisubtemp.length,(a,b,c) => {return !(c == 3);},true);
+                        whisubtemp2 = whisubstr(inputtext,13 + whisubtemp.length,(a,b,c) => {return !(c == 3);},true);
                         inputstr.push(" " + whisubtemp2);
-                        whisubtemp3 = whisubstr(inputtext,15 + whisubtemp.length + whisubtemp2.length,(a,b,c) => {return !(c == 3);},true);
+                        whisubtemp3 = whisubstr(inputtext,13 + whisubtemp.length + whisubtemp2.length,(a,b,c) => {return !(c == 3);},true);
                         inputstr.push(" " + whisubtemp3 + "</code>");
                         whisubtemp4 = " " + whisubstr(inputtext,16 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length,(a,b,c) => {return !(a.substr(b,1) == "");});
                         inputstr.push("<code class=\"codeLightGreen\">"+whisubtemp4+"</code>");
