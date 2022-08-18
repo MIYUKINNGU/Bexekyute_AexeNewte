@@ -80,7 +80,7 @@
                         console.log(inputtext.substr(9 + whisubtemp.length + whisubtemp2.length, inputtext.length - (8 + whisubtemp.length + whisubtemp2.length)))
                         inputtext = inputtext.substr(9 + whisubtemp.length + whisubtemp2.length, inputtext.length - (8 + whisubtemp.length + whisubtemp2.length))
                         console.log(whisubtemp2.replace(/\s+/,""));
-                        inputstr.push((whisubtemp2 == "~~~ " || whisubtemp2 == "^^^ " || whisubtemp2 == "~ ~ ~" || whisubtemp2 == "^ ^ ^" ? "" : "<code class=\"codePurple\"> positioned </code><code class\"codenumber\">" + whisubtemp2 + "</code>"));
+                        inputstr.push((whisubtemp2 == "~~~ " || whisubtemp2 == "^^^ " || whisubtemp2 == "~ ~ ~" || whisubtemp2 == "^ ^ ^" ? "" : "<code class=\"codePurple\"> positioned </code><code class=\"codenumber\">" + whisubtemp2 + "</code>"));
                         if (inputtext.substr(0,1) == " ") {
                             inputtext = inputtext.substr(1,inputtext.length-1)
                         }
@@ -90,7 +90,7 @@
                         if (whisubtemp.substr(whisubtemp2.length-1,1) == " ") {
                             whisubtemp = whisubtemp.substr(0,whisubtemp2.length-1)
                         }
-                        inputstr.push("<code class\"codenumber\"> " + whisubtemp + "</code>");
+                        inputstr.push("<code class=\"codenumber\"> " + whisubtemp + "</code>");
                         whisubtemp2 = whisubstr(inputtext,7 + whisubtemp.length,(a,b,c) => {return !(a.substr(b,1) == " ")});
                         if (whisubtemp2.substr(0,1) == " ") {
                             whisubtemp2 = whisubtemp2.substr(1,whisubtemp2.length-1)
