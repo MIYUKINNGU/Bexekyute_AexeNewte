@@ -97,7 +97,7 @@
                         }
                         inputstr.push("<code class=\"codeLightGreen\"> " + whisubtemp2 + "</code>");
                         whisubtemp3 = whisubstr(inputtext,9 + whisubtemp.length + whisubtemp2.length,(a,b,c) => {return !(a.substr(b,1) == " ");});
-                        inputstr.push("<code class=\"codenumber\"> " + whisubtemp3 + " </code>");
+                        inputstr.push("<code class=\"codenumber\"> " + whisubtemp3 + "</code>");
                         inputtext = inputtext.substr(10 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length, inputtext.length - (6 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length))
                     }else if (inputtext.substr(0,13) == "testforblocks") {
                         inputstr.push("<code class=\"codePurple\"> if blocks</code>");
