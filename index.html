@@ -75,7 +75,7 @@
                         console.log("if_execute")
                         //一瞬で作り終わったas at。こいつはまともに動くぞ(まともにdebugしてないけど)
                         let whisubtemp = whisubstr(inputtext,8,(a,b,c) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p ") ;})
-                        inputstr.push("<code class=\"codePurple\">as</code><code class=\"codeLightGreen\"> " + whisubtemp + "</code> <code class=\"codePurple\">at</code><code class=\"codeLightGreen\"> @s</code>");
+                        inputstr.push(" <code class=\"codePurple\">as</code><code class=\"codeLightGreen\"> " + whisubtemp + "</code> <code class=\"codePurple\">at</code><code class=\"codeLightGreen\"> @s</code>");
                         //positioned。9割ゴリ押し。そのせいでwhisubstr関数もゴリ押しになりました☆
                         whisubtemp2 = whisubstr(inputtext,9 + whisubtemp.length,(a,b,c) => {return !(c == 3);},true);
                         console.log(inputtext.substr(9 + whisubtemp.length + whisubtemp2.length, inputtext.length - (8 + whisubtemp.length + whisubtemp2.length)))
@@ -149,7 +149,7 @@
                     console.log("SUCCESSFULC")
                 }
                 //出力END
-                inputstr.unshift("<code class=\"codePurple\">execute </code>")
+                inputstr.unshift("<code class=\"codePurple\">execute</code>")
                 document.getElementById("out").innerHTML = "<span id=\"out\">" + inputstr.join("") + "</span>";
                 console.log(inputstr)
             }
