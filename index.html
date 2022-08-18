@@ -87,7 +87,7 @@
                             whisubtemp2 = whisubtemp2.substr(1,whisubtemp2.length-1)
                         }
                         inputstr.push(" " + whisubtemp2);
-                        whisubtemp3 = whisubstr(inputtext,7,(a,b,c) => {return !(c == 1);},true);
+                        whisubtemp3 = whisubstr(inputtext,7 + whisubtemp.length + whisubtemp2.length,(a,b,c) => {return !(a.substr(b,1) == " ");});
                         inputstr.push(" " + whisubtemp3);
                         inputtext = inputtext.substr(7 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length, inputtext.length - (6 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length))
                     }else {
