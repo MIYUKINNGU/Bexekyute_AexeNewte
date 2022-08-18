@@ -106,7 +106,7 @@
                         inputstr.push(" " + whisubtemp2);
                         whisubtemp3 = whisubstr(inputtext,16 + whisubtemp.length + whisubtemp2.length,(a,b,c) => {return !(c == 3);},true);
                         inputstr.push(" " + whisubtemp3);
-                        whisubtemp4 = whisubstr(inputtext,17 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length,(a,b,c) => {return !(a.substr(b,1) == " ");});
+                        whisubtemp4 = whisubstr(inputtext,17 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length,(a,b,c) => {return !(a.substr(b,1) == "");});
                         inputstr.push(" " + whisubtemp4 + " ");
                         if (whisubtemp4.substr(0,1) == " ") {
                             whisubtemp4 = whisubtemp4.substr(1,whisubtemp4.length-1)
@@ -124,9 +124,9 @@
                             whisubtemp2 = whisubtemp2.substr(1,whisubtemp2.length-1)
                         }
                         inputstr.push(" " + whisubtemp2);
-                        whisubtemp3 = whisubstr(inputtext,15 + whisubtemp.length + whisubtemp2.length,(a,b,c) => {return !(a.substr(b,1) == " ");});
+                        whisubtemp3 = whisubstr(inputtext,15 + whisubtemp.length + whisubtemp2.length,(a,b,c) => {return !(a.substr(b,1) == "");});
                         inputstr.push(" " + whisubtemp3 + " ");
-                        inputtext = inputtext.substr(16 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length, inputtext.length - (6 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length))
+                        break;
                     }else if (inputtext.substr(0,7) == "testfor"){
                         inputstr.push(" if entity");
                         whisubtemp = whisubtemp.substr(8 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length, inputtext.length - (6 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length))
@@ -136,7 +136,7 @@
                         inputstr.push(inputtext);
                         whileswitch = false
                     };
-                    if (50 < mainloop){
+                    if (100 < mainloop){
                         listr = ["無限処理が入りました。コマンドの構文にミスがある可能性があります。"];
                         break;
                     };
