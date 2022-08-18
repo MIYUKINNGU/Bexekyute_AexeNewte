@@ -106,11 +106,11 @@
                         inputstr.push(" " + whisubtemp2);
                         whisubtemp3 = whisubstr(inputtext,16 + whisubtemp.length + whisubtemp2.length,(a,b,c) => {return !(c == 3);},true);
                         inputstr.push(" " + whisubtemp3);
-                        whisubtemp4 = whisubstr(inputtext,17 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length,(a,b,c) => {return !(a.substr(b,1) == "");});
-                        inputstr.push(" " + whisubtemp4 + " ");
+                        whisubtemp4 = " " + whisubstr(inputtext,17 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length,(a,b,c) => {return !(a.substr(b,1) == "");});
                         if (whisubtemp4.substr(0,1) == " ") {
                             whisubtemp4 = whisubtemp4.substr(1,whisubtemp4.length-1)
                         }
+                        inputstr.push(whisubtemp4);
                         break;
                     }else if(inputtext.substr(0,12) == "testforblock") {
                         inputstr.push(" if block");
