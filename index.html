@@ -108,10 +108,7 @@
                         whisubtemp3 = whisubstr(inputtext,14 + whisubtemp.length + whisubtemp2.length,(a,b,c) => {return !(c == 3);},true);
                         inputstr.push(" " + whisubtemp3 + "</code>");
                         whisubtemp4 = " " + whisubstr(inputtext,17 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length,(a,b,c) => {return !(a.substr(b,1) == "");});
-                        if (whisubtemp4.substr(0,1) == " ") {
-                            whisubtemp4 = whisubtemp4.substr(1,whisubtemp4.length-1)
-                        }
-                        inputstr.push("<code class=\"codeLightGreen\"> "+whisubtemp4+"</code>");
+                        inputstr.push("<code class=\"codeLightGreen\">"+whisubtemp4+"</code>");
                         break;
                     }else if(inputtext.substr(0,12) == "testforblock") {
                         inputstr.push("<code class=\"codePurple\"> if block</code>");
