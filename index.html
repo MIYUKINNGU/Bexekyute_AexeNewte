@@ -9,11 +9,6 @@
         <input type="button" value="変換" onclick="con()" style="display:block" />
         <pre><code><span id="out" style="display:block"></span></code></pre>
         <script>
-            //文字列挿入関数。どっかから持ってきた。
-            function strIns(str, idx, val){
-                var res = str.slice(0, idx) + val + str.slice(idx);
-                return res;
-            };
             //条件に当てはまるまでの文字を取得～　高階関数っていうね。　str：文字列　idx：最初の文字列の位置　func：条件　mode：座標mode。これでゴリ押すしかなかった。
             function whisubstr(str,idx,func,mode = false){
                 let i = 0;
@@ -44,6 +39,7 @@
                                     listr = ["無限処理が入りました。コマンドの構文にミスがある可能性があります。"];
                                     break;
                                 };
+                                console.log("SUCCESSFULA")
                             }
                         }
                     }else if (!mode) {
@@ -51,7 +47,7 @@
                     };
                     backstr = str.substr(idx+i,1)
                     i += 1;
-                    console.log("SUCCESSFUL")
+                    console.log("SUCCESSFULB")
                     //無限処理対策～
                     if (str.length+5 < i){
                         listr = ["無限処理が入りました。コマンドの構文にミスがある可能性があります。"];
@@ -135,6 +131,7 @@
                         listr = ["無限処理が入りました。コマンドの構文にミスがある可能性があります。"];
                         break;
                     };
+                    console.log("SUCCESSFULC")
                 }
                 //出力END
                 document.getElementById("out").textContent = inputstr;
