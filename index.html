@@ -20,15 +20,15 @@
                 let ends = 0;
                 //dowhileにしてるけど正直whileでもいい～
                 do {
-                    console.log((/~|\u005e/.test(backstr) || (/\u002d?[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ")) && mode)
+                    console.log((/~|\u005e/.test(backstr) || (/[0-9]/.test(backstr) && str.substr(idx+i,1) == " ")) && mode)
                     console.log((/[0-9]/.test(backstr) && str.substr(idx+i,1) == " "))
                     console.log(backstr)
-                    if ((/~|\u005e/.test(backstr) || (/\u002d?[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ")) && mode) {
+                    if ((/~|\u005e/.test(backstr) || (/[0-9]/.test(backstr) && str.substr(idx+i,1) == " ")) && mode) {
                         user += 1
                         console.log(user)
                         if (user == 3){
                             let loop = 0
-                            while (/\u002d?[0-9]/.test(str.substr(idx+i+2,1))) {
+                            while (/[0-9]/.test(str.substr(idx+i+2,1))) {
                                 loop += 1
                                 console.log("USER SUCCESSFUL")
                                 console.log(str.substr(idx+i-+1,3))
