@@ -28,7 +28,7 @@
                     //構文ミスメモ：どうやらbackstr変数が問題らしい。backstr変数の動きを見たらわかるかも...?
                     console.log((/[0-9]/.test(backstr) && str.substr(idx+i,1) == " "))
                     console.log(backstr)
-                    if ((/[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ") && mode) {
+                    if ((/~|\u005e/.test(backstr) || (/[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ")) && mode) {
                         user += 1
                         console.log(user)
                         if (user == 3){
