@@ -63,15 +63,19 @@
             //main関数だと思いなさい。
             function con() {
                 const textvalue = document.getElementById("textarea").value;
+                let inputtext = textvalue;
                 let inputstr = [];
-                if (textvalue.substr(0,7) == "execute") {
+                if (inputtext.substr(0,7) == "execute") {
                     //一瞬で作り終わったas at。こいつはまともに動くぞ(まともにdebugしてないけど)
-                    let whisubtemp = whisubstr(textvalue,8,(a,b,c) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p ") ;})
+                    let whisubtemp = whisubstr(inputtext,8,(a,b,c) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p ") ;})
                     inputstr.push("as " + whisubtemp + " at @s");
                     //正規表現とUnicodeしかない地獄のバグバグpositioned！/~\d*|\u005e\d*|\d/という正規表現は~~~とか~1~~とかを表してるよ！正直参考にするな。
                     whisubtemp2 = whisubstr(textvalue,9 + whisubtemp.length,(a,b,c) => {return !(c == 3);},true);
+                    inputtext = inputtext.substr(9 + whisubtemp.length + whisubtemp2.length, inputtext - (8 + whisubtemp.length + whisubtemp2.length))
                     console.log(whisubtemp2.replace(/\s+/,""));
                     inputstr.push(" " + (whisubtemp2 == "~~~" || whisubtemp2 == "^^^" || whisubtemp2 == "~ ~ ~" || whisubtemp2 == "^ ^ ^" ? "" : "positioned " + whisubtemp2));
+                }else{
+                    inputstr.push(inputtext);
                 };
                 //出力END
                 document.getElementById("out").textContent = inputstr;
