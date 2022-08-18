@@ -24,11 +24,11 @@
                 let ends = 0;
                 //dowhileにしてるけど正直whileでもいい～
                 do {
-                    console.log((str.substr(idx+i,1) == "~" || str.substr(idx+i,1) == "^" || (/[0-9]/.test(backstr) && str.substr(idx+i,1) == " ") ) && mode)
+                    console.log((/[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ") && mode)
                     //構文ミスメモ：どうやらbackstr変数が問題らしい。backstr変数の動きを見たらわかるかも...?
                     console.log((/[0-9]/.test(backstr) && str.substr(idx+i,1) == " "))
                     console.log(backstr)
-                    if ((str.substr(idx+i,1) == "~" || str.substr(idx+i,1) == "^" || (/[0-9]/.test(backstr) && str.substr(idx+i,1) == " ") ) && mode) {
+                    if ((/[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ") && mode) {
                         user += 1
                         console.log(user)
                         if (user == 3){
