@@ -80,6 +80,7 @@
                             inputtext = inputtext.substr(1,inputtext.length-1)
                         }
                     }else if(inputtext.substr(0,6) == "detect") {
+                        inputstr.push(" if block");
                         whisubtemp = whisubstr(inputtext,7,(a,b,c) => {return !(c == 3);},true);
                         inputstr.push(" " + whisubtemp);
                         whisubtemp2 = whisubstr(inputtext,8 + whisubtemp.length,(a,b,c) => {return !(a.substr(b,1) == " ")});
@@ -88,8 +89,36 @@
                         }
                         inputstr.push(" " + whisubtemp2);
                         whisubtemp3 = whisubstr(inputtext,9 + whisubtemp.length + whisubtemp2.length,(a,b,c) => {return !(a.substr(b,1) == " ");});
-                        inputstr.push(" " + whisubtemp3);
+                        inputstr.push(" " + whisubtemp3 + " ");
                         inputtext = inputtext.substr(10 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length, inputtext.length - (6 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length))
+                    }else if (inputtext.substr(0,13) == "testforblocks") {
+                        inputstr.push(" if blocks");
+                        whisubtemp = whisubstr(inputtext,14,(a,b,c) => {return !(c == 3);},true);
+                        inputstr.push(" " + whisubtemp);
+                        whisubtemp2 = whisubstr(inputtext,15 + whisubtemp.length,(a,b,c) => {return !(c == 3);},true);
+                        inputstr.push(" " + whisubtemp2);
+                        whisubtemp3 = whisubstr(inputtext,16 + whisubtemp.length + whisubtemp2.length,(a,b,c) => {return !(c == 3);},true);
+                        inputstr.push(" " + whisubtemp3);
+                        whisubtemp4 = whisubstr(inputtext,17 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length,(a,b,c) => {return !(a.substr(b,1) == " ");});
+                        inputstr.push(" " + whisubtemp4 + " ");
+                        if (whisubtemp4.substr(0,1) == " ") {
+                            whisubtemp4 = whisubtemp4.substr(1,whisubtemp4.length-1)
+                        }
+                    }else if(inputtext.substr(0,12) == "testforblock") {
+                        inputstr.push(" if block");
+                        whisubtemp = whisubstr(inputtext,13,(a,b,c) => {return !(c == 3);},true);
+                        inputstr.push(" " + whisubtemp);
+                        whisubtemp2 = whisubstr(inputtext,14 + whisubtemp.length,(a,b,c) => {return !(a.substr(b,1) == " ")});
+                        if (whisubtemp2.substr(0,1) == " ") {
+                            whisubtemp2 = whisubtemp2.substr(1,whisubtemp2.length-1)
+                        }
+                        inputstr.push(" " + whisubtemp2);
+                        whisubtemp3 = whisubstr(inputtext,15 + whisubtemp.length + whisubtemp2.length,(a,b,c) => {return !(a.substr(b,1) == " ");});
+                        inputstr.push(" " + whisubtemp3 + " ");
+                    }else if (inputtext.substr(0,7) == "testforblock"){
+                        inputstr.push(" if entity");
+                        whisubtemp = whisubtemp.substr(8 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length, inputtext.length - (6 + whisubtemp.length + whisubtemp2.length + whisubtemp3.length))
+                        inputstr.push(" " + whisubtemp);
                     }else {
                         inputstr.push(inputtext);
                         whileswitch = false
