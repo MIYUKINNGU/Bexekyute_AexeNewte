@@ -25,7 +25,6 @@
                 //dowhileにしてるけど正直whileでもいい～
                 do {
                     console.log((/~|\u005e/.test(backstr) || (/[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ")) && mode)
-                    //構文ミスメモ：どうやらbackstr変数が問題らしい。backstr変数の動きを見たらわかるかも...?
                     console.log((/[0-9]/.test(backstr) && str.substr(idx+i,1) == " "))
                     console.log(backstr)
                     if ((/~|\u005e/.test(backstr) || (/[0-9]|~|\u005e/.test(backstr) && str.substr(idx+i,1) == " ")) && mode) {
@@ -71,7 +70,7 @@
                         //一瞬で作り終わったas at。こいつはまともに動くぞ(まともにdebugしてないけど)
                         let whisubtemp = whisubstr(inputtext,8,(a,b,c) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p ") ;})
                         inputstr.push("as " + whisubtemp + " at @s");
-                        //正規表現とUnicodeしかない地獄のバグバグpositioned！/~\d*|\u005e\d*|\d/という正規表現は~~~とか~1~~とかを表してるよ！正直参考にするな。
+                        //positioned。9割ゴリ押し。そのせいでwhisubstr関数もゴリ押しになりました☆
                         whisubtemp2 = whisubstr(inputtext,9 + whisubtemp.length,(a,b,c) => {return !(c == 3);},true);
                         console.log(inputtext.substr(9 + whisubtemp.length + whisubtemp2.length, inputtext.length - (8 + whisubtemp.length + whisubtemp2.length)))
                         inputtext = inputtext.substr(9 + whisubtemp.length + whisubtemp2.length, inputtext.length - (8 + whisubtemp.length + whisubtemp2.length))
@@ -83,7 +82,10 @@
                     }else if(inputtext.substr(0,6) == "detect") {
                         whisubtemp = whisubstr(inputtext,7,(a,b,c) => {return !(c == 3);},true);
                         inputstr.push(" " + whisubtemp);
-                        whisubtemp2 = whisubstr(inputtext,7 + whisubtemp.length,(a,b,c) => {return !(a.substr(b,1) == " ")});
+                        whisubtemp2 = whisubstr(inputtext,8 + whisubtemp.length,(a,b,c) => {return !(a.substr(b,1) == " ")});
+                        if (whisubtemp2.substr(0,1) == " ") {
+                            whisubtemp2 = whisubtemp2.substr(1,whisubtemp2.length-1)
+                        }
                         inputstr.push(" " + whisubtemp2);
                         whisubtemp3 = whisubstr(inputtext,7,(a,b,c) => {return !(c == 1);},true);
                         inputstr.push(" " + whisubtemp3);
