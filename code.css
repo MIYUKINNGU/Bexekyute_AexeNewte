@@ -1,0 +1,55 @@
+pre,code{
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    font-size: 13px;
+}
+pre.MainCode{
+    color: #eeeeee;
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    color: #f9f9f9;
+    background-color: #444;
+    width: 100%;
+    border-radius: 0px 3px 3px 0px;
+    border: solid 1px #d6dde4;
+    border-left: #444;
+}
+pre.line{
+    background-color: #444;
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    border-radius: 3px 0px 0px 3px;
+    border: solid 1px #d6dde4;
+    border-right: #444;
+    color: #c1c4c7
+}
+div.Code{
+    display: flex;
+    width: 45%
+}
+code.codeBlue{
+    color: #1188dd;
+}
+code.codeOrange{
+    color: #efc17c;
+}
+code.codeLightGreen{
+    color: #22eecc;
+}
+code.codenumber{
+    color: #bbffcc;
+}
+code.codePurple{
+    color: #dda0ee;
+}
+code.codeVar-Option{
+    color: #99eeff;
+}
+code.codeYelow{
+    color: #ffffaa;
+}
+code.codeComment{
+    color: #60ac42;
+}
+code.codeLemon{
+    color: #f1dc96;
+}
