@@ -66,7 +66,7 @@
                     //正規表現とUnicodeしかない地獄のバグバグpositioned！/~\d*|\u005e\d*|\d/という正規表現は~~~とか~1~~とかを表してるよ！正直参考にするな。
                     whisubtemp2 = whisubstr(textvalue,9 + whisubtemp.length,(a,b,c) => {return !(c == 3);},true);
                     console.log(whisubtemp2.replace(/\s+/,""));
-                    inputstr.push(" " + (whisubtemp2.replace(/\u0020/,"") == "~~~" || whisubtemp2.replace(/\u0020/,"") == "^^^" ? "" : "positioned " + whisubtemp2));
+                    inputstr.push(" " + (whisubtemp2 == "~~~" || whisubtemp2 == "^^^" || whisubtemp2 == "~ ~ ~" || whisubtemp2 == "^ ^ ^" ? "" : "positioned " + whisubtemp2));
                 };
                 //出力END
                 document.getElementById("out").textContent = inputstr;
