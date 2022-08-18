@@ -76,7 +76,10 @@
                         console.log(inputtext.substr(9 + whisubtemp.length + whisubtemp2.length, inputtext.length - (8 + whisubtemp.length + whisubtemp2.length)))
                         inputtext = inputtext.substr(9 + whisubtemp.length + whisubtemp2.length, inputtext.length - (8 + whisubtemp.length + whisubtemp2.length))
                         console.log(whisubtemp2.replace(/\s+/,""));
-                        inputstr.push((whisubtemp2 == "~~~" || whisubtemp2 == "^^^" || whisubtemp2 == "~ ~ ~" || whisubtemp2 == "^ ^ ^" ? "" : " positioned " + whisubtemp2));
+                        inputstr.push((whisubtemp2 == "~~~ " || whisubtemp2 == "^^^ " || whisubtemp2 == "~ ~ ~" || whisubtemp2 == "^ ^ ^" ? "" : " positioned " + whisubtemp2));
+                        if (inputtext.substr(0,1) == " ") {
+                            inputtext = inputtext.substr(1,inputtext.length-1)
+                        }
                     }else if(inputtext.substr(0,6) == "detect") {
                         whisubtemp = whisubstr(inputtext,7,(a,b,c) => {return !(c == 3);},true);
                         inputstr.push(" " + whisubtemp);
