@@ -6,6 +6,7 @@
     </head>
     <body bgcolor="#000">
         <!--htmlは見ても見なくても変わらん。-->
+        <p>Release 1.1.0 - バグが多い初期の状態です。バグ報告の確認は<a href="https://discord.com/channels/941651004884152380/1009812445893775360">バグトラッカー</a>をご参照ください。</p>
         <textarea id="textarea"></textarea>
         <input type="button" value="変換" onclick="con()" style="display:block" />
         <pre class="MainCode"><span id="out"></span></pre>
@@ -143,7 +144,7 @@
                         whileswitch = false
                     };
                     if (100 < mainloop){
-                        listr = ["無限処理が入りました。コマンドの構文にミスがある可能性があります。"];
+                        listr = ["無限ループ対策のため長い構文には対応していません。申し訳ございません。"];
                         break;
                     };
                     console.log("SUCCESSFULC")
