@@ -19,13 +19,14 @@
                 let sertch = idx;
                 let backstr = "";
                 let ends = 0;
+                let switchstr = true
                 //dowhileにしてるけど正直whileでもいい～
                 do {
                     console.log((/~|\u005e/.test(backstr) || (/[0-9]/.test(backstr) && str.substr(idx+i,1) == " ")) && mode)
                     console.log((/[0-9]/.test(backstr) && str.substr(idx+i,1) == " "))
                     console.log(backstr)
                     console.log(str.substr(sertch,ends-sertch))
-                    if (((/~|\u005e/.test(str.substr(idx+i,1)) && (str.substr(idx+i+1,1) == " " ||str.substr(idx+i+1,1) == "~" || str.substr(idx+i+1,1) == "^" || /[0-9]|-/.test(str.substr(idx+i+1,1)))) || (/[0-9]|-/.test(idx+i,1) && str.substr(backstr) == " ")) && mode) {
+                    if (((/~|\u005e/.test(str.substr(idx+i,1)) && (str.substr(idx+i+1,1) == " " ||str.substr(idx+i+1,1) == "~" || str.substr(idx+i+1,1) == "^" || /[0-9]|-/.test(str.substr(idx+i+1,1)))) || (/[0-9]|-/.test(idx+i,1) && str.substr(idx+i-1,1) == " ")) && mode) {
                         user += 1
                         console.log(user)
                         if (user == 3){
@@ -48,6 +49,11 @@
                     }else if (!mode) {
                         listr.push(str.substr(idx+i,1));
                     };
+                    if (str.substr(idx+i,1) == "[") {
+                        switchstr = false
+                    }else if (str.substr(idx+i+1,1) == "]") {
+                        switchstr = true
+                    }
                     backstr = str.substr(idx+i,1)
                     i += 1;
                     console.log("SUCCESSFULB")
@@ -57,7 +63,7 @@
                         break;
                     };
                     ends = idx + i + 1;
-                } while (func(str,idx+i,user));
+                } while (func(str,idx+i,user) && !switchstr);
                 if (mode) {
                     console.log(str.substr(ends,1))
                     if (str.substr(ends-1,1) == " "){
@@ -71,16 +77,20 @@
             //main関数だと思いなさい。
             function con() {
                 const textvalue = document.getElementById("textarea").value;
-                let inputtext = textvalue.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/&/g,"&amp;");
+                let inputtext = textvalue.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
                 let inputstr = [];
                 let whileswitch = true
                 let mainloop = 0;
+                let whisubtemp = ""
+                let whisubtemp2 = ""
+                let whisubtemp3 = ""
+                let whisubtemp4 = ""
                 while (whileswitch) {
                     mainloop += 1
                     if (inputtext.substr(0,7) == "execute") {
                         console.log("if_execute")
                         //一瞬で作り終わったas at。こいつはまともに動くぞ(まともにdebugしてないけど)
-                        let whisubtemp = whisubstr(inputtext,8,(a,b,c) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p ") ;})
+                        whisubtemp = whisubstr(inputtext,8,(a,b,c) => {return !(a.substr(b-1,2) == "] " || a.substr(b-1,2) == "a " || a.substr(b-1,2) == "s " || a.substr(b-1,2) == "r " || a.substr(b-1,2) == "e " || a.substr(b-1,2) == "p " || /[a-zA-Z]\u0020/.test(a.substr(b-1,2)));})
                         inputstr.push(" <code class=\"codePurple\">as</code><code class=\"codeLightGreen\"> " + whisubtemp + "</code> <code class=\"codePurple\">at</code><code class=\"codeLightGreen\"> @s</code>");
                         //positioned。9割ゴリ押し。そのせいでwhisubstr関数もゴリ押しになりました☆
                         whisubtemp2 = whisubstr(inputtext,9 + whisubtemp.length,(a,b,c) => {return !(c == 3);},true);
@@ -149,7 +159,7 @@
                         whileswitch = false
                     };
                     if (100 < mainloop){
-                        listr = ["無限ループ対策のため長い構文には対応していません。申し訳ございません。"];
+                        inputstr = ["無限ループ対策のため長い構文には対応していません。申し訳ございません。"];
                         break;
                     };
                     console.log("SUCCESSFULC")
