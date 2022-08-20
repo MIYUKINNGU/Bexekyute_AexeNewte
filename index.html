@@ -59,6 +59,7 @@
                     ends = idx + i + 1;
                 } while (func(str,idx+i,user));
                 if (mode) {
+                    console.log(str.substr(ends,1))
                     if (str.substr(ends,1) == " "){
                         ends -= 1
                     }
