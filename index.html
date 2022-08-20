@@ -25,7 +25,7 @@
                     console.log((/[0-9]/.test(backstr) && str.substr(idx+i,1) == " "))
                     console.log(backstr)
                     console.log(str.substr(sertch,ends-sertch))
-                    if (((/~|\u005e/.test(str.substr(idx+i,1)) && (str.substr(idx+i+1,1) == " " ||str.substr(idx+i+1,1) == "~" || str.substr(idx+i+1,1) == "^" || /[0-9]|-/.test(str.substr(idx+i+1,1)))) || (/[0-9]/.test(backstr) && str.substr(idx+i,1) == " ")) && mode) {
+                    if (((/~|\u005e/.test(str.substr(idx+i,1)) && (str.substr(idx+i+1,1) == " " ||str.substr(idx+i+1,1) == "~" || str.substr(idx+i+1,1) == "^" || /[0-9]|-/.test(str.substr(idx+i+1,1)))) || (/[0-9]|-/.test(backstr) && str.substr(idx+i,1) == " ")) && mode) {
                         user += 1
                         console.log(user)
                         if (user == 3){
