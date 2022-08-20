@@ -59,6 +59,9 @@
                     ends = idx + i + 1;
                 } while (func(str,idx+i,user));
                 if (mode) {
+                    if (str.substr(ends,1) == " "){
+                        ends -= 1
+                    }
                     listr.push(str.substr(sertch,ends-sertch));
                 };
                 console.log(listr);
