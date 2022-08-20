@@ -60,7 +60,7 @@
                 } while (func(str,idx+i,user));
                 if (mode) {
                     console.log(str.substr(ends,1))
-                    if (str.substr(ends,1) == " "){
+                    if (str.substr(ends-1,1) == " "){
                         ends -= 1
                     }
                     listr.push(str.substr(sertch,ends-sertch));
